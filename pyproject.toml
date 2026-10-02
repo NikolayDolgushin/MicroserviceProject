@@ -1,0 +1,13 @@
+[project]
+name = "microservice_project"
+version = "0.1.0"
+description = "Проект по специальности Сетевые технологии студента группы ИВТ-ИСОИ-401Б Долгушина Николая"
+readme = "README.md"
+requires-python = "~=3.14.0"
+depenenchies = [
+    
+]
+dependencies = [
+    "fastapi>=0.141.1",
+    "uvicorn>=0.53.0",
+]
