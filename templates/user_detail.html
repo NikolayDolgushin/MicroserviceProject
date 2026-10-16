@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Пользователь #{{ user.id }}{% endblock %}
+{% block header %}Пользователь #{{ user.id }}{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>{{ user.id }}</td>
+        </tr>
+        <tr>
+            <th>Урок</th>
+            <td>{{ user.lesson.item }}</td>
+        </tr>
+        <tr>
+            <th>Статус</th>
+            <td>{{ user.lesson.status }}</td>
+        </tr>
+    </table>
+
+    <div class="actions" style="margin-top: 20px;">
+        <a href="/user/page/{{ user.id }}/edit">Редактировать</a>
+        <a href="/user/page">← Назад к списку</a>
+    </div>
+{% endblock %}

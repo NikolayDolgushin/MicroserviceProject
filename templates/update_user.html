@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование пользователя #{{ user_id }}{% endblock %}
+{% block header %}Редактирование пользователя #{{ user_id }}{% endblock %}
+
+{% block content %}
+    {% if message %}
+        <div class="message {{ 'success' if not error else 'error' }}">{{ message }}</div>
+    {% endif %}
+
+    <form method="post" action="/user/page/{{ user_id }}/edit">
+        <label for="item">Урок:</label>
+        <input type="text" name="item" id="item" required value="{{ form.item or '' }}">
+
+        <label for="status">Статус:</label>
+        <input type="text" name="status" id="status" required value="{{ form.status or '' }}">
+
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <p>
+        <a href="/user/page/{{ user_id }}">← К пользователю</a> |
+        <a href="/user/page">← К списку</a>
+    </p>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Список пользователей{% endblock %}
+{% block header %}Список пользователей{% endblock %}
+
+{% block content %}
+    {% if users %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Урок</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.lesson.item }}</td>
+                    <td>{{ user.lesson.status }}</td>
+                    <td class="actions">
+                        <a href="/user/page/{{ user.id }}">Открыть</a>
+                        <a href="/user/page/{{ user.id }}/edit">Редактировать</a>
+                        <a href="/user/page/{{ user.id }}/delete">Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="message">Пользователей пока нет.</div>
+    {% endif %}
+{% endblock %}
