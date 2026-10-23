@@ -59,7 +59,3 @@ async def delete_event(event_id: int) -> UserMessage:
     return UserMessage(message="Event deleted successfully")
 
 
-@event_router.delete("/", response_model=UserMessage)
-async def delete_all_events() -> UserMessage:
-    events.clear()
-    return UserMessage(message="Events deleted successfully")
