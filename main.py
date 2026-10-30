@@ -1,6 +1,7 @@
-from fastapi import FastAPI
 import uvicorn
+from fastapi import FastAPI
 
+from database.connection import init_db
 from routes.events import event_router
 from routes.users import user_router
 
@@ -11,6 +12,11 @@ app = FastAPI(
 
 app.include_router(user_router, prefix="/user", tags=["User"])
 app.include_router(event_router, prefix="/event", tags=["Events"])
+
+
+@app.on_event("startup")
+def on_startup():
+    init_db()
 
 
 @app.get("/", tags=["Root"])
