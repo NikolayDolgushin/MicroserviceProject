@@ -1,4 +1,14 @@
+from beanie import Document, PydanticObjectId
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
+
+
+class User(Document):
+    email: str
+    password_hash: str
+    events: list[PydanticObjectId] = Field(default_factory=list)
+
+    class Settings:
+        name = "users"
 
 
 class UserCreate(BaseModel):
@@ -11,12 +21,6 @@ class UserSignIn(BaseModel):
     password: str
 
 
-class User(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
+class UserResponse(BaseModel):
+    id: str
     email: EmailStr
-    events: list[int] = Field(default_factory=list)
-
-
-class UserMessage(BaseModel):
-    message: str
